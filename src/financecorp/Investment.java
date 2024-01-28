@@ -1,6 +1,6 @@
-package financecorp_g4;
+package financecorp;
 
-public abstract class Investment_G4 implements PortfolioValue_G4{
+public abstract class Investment implements PortfolioValue{
     private String customerName;
     private String investmentType;
     private String symbol;
@@ -9,7 +9,7 @@ public abstract class Investment_G4 implements PortfolioValue_G4{
     private int purchasePrice;
     private int currentMarketValue;
     
-    public Investment_G4(String customerName, String investmentType, String symbol, String name, int quantity, int purchasePrice, int currentMarketValue) {
+    public Investment(String customerName, String investmentType, String symbol, String name, int quantity, int purchasePrice, int currentMarketValue) {
         this.customerName = customerName;
         this.investmentType = investmentType;
         this.symbol = symbol;
@@ -86,8 +86,8 @@ public abstract class Investment_G4 implements PortfolioValue_G4{
                "\t currentMarketValue = " + getCurrentMarketValue();
     }
     
-    /* Method is overriden from the interface. get;s the current market value
-    * of a investment object.
+    /* Method is overridden from the interface. Get's the current market value
+    * of an investment object.
     */
     
     @Override
