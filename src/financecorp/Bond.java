@@ -1,10 +1,10 @@
-package financecorp_g4;
+package financecorp;
 
-public class Bond_G4 extends Investment_G4 implements PortfolioValue_G4{
+public class Bond extends Investment implements PortfolioValue{
     private int couponRate;
     private String maturityDate;
     
-    public Bond_G4(String customerName, String investmentType, String symbol, String name, int quantity, int purchasePrice, int currentMarketValue, int couponRate, String maturityDate) {
+    public Bond(String customerName, String investmentType, String symbol, String name, int quantity, int purchasePrice, int currentMarketValue, int couponRate, String maturityDate) {
         super(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue);
         this.couponRate = couponRate;
         this.maturityDate = maturityDate;
@@ -39,7 +39,7 @@ public class Bond_G4 extends Investment_G4 implements PortfolioValue_G4{
                "\t maturityDate = " + getMaturityDate();
     }
     
-    /* Method is overriden from the interface. get;s the current market value
+    /* Method is overridden from the interface. Get's the current market value
     * of the the bond object.
     */
     
