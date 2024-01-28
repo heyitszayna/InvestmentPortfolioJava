@@ -1,15 +1,10 @@
-package financecorp_g4;
+package financecorp;
 
-/*
- * CSC301 Assignment 1
- * Done by: Zayna Wasma (1084503)
- */
-
-public class MutualFund_G4 extends Investment_G4 implements PortfolioValue_G4{
+public class MutualFund extends Investment implements PortfolioValue{
     private int expenseRate;
     private String investmentStyle;
     
-    public MutualFund_G4(String customerName, String investmentType, String symbol, String name, int quantity, int purchasePrice, int currentMarketValue, int expenseRate, String investmentStyle) {
+    public MutualFund(String customerName, String investmentType, String symbol, String name, int quantity, int purchasePrice, int currentMarketValue, int expenseRate, String investmentStyle) {
         super(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue);
         this.expenseRate = expenseRate;
         this.investmentStyle = investmentStyle;
@@ -44,8 +39,8 @@ public class MutualFund_G4 extends Investment_G4 implements PortfolioValue_G4{
                "\t investmentStyle = " + getInvestmentStyle();
     }
     
-    /* Method is overriden from the interface. get;s the current market value
-    * of the the mutul fund object.
+    /* Method is overridden from the interface. Get's the current market value
+    * of the mutual fund object.
     */
     
     @Override
