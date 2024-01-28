@@ -3,11 +3,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
-/*
- * CSC301 Assignment 1
- * Done by: Zayna Wasma (1084503)
- */
-
 public class FinanceCorp_G4 {
     public static  ArrayList<Investment_G4> portfolio = new ArrayList<Investment_G4>();
     
