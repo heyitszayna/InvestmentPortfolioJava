@@ -1,10 +1,10 @@
-package financecorp_g4;
+package financecorp;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
-public class FinanceCorp_G4 {
-    public static  ArrayList<Investment_G4> portfolio = new ArrayList<Investment_G4>();
+public class FinanceCorp {
+    public static  ArrayList<Investment> portfolio = new ArrayList<Investment>();
     
     public static void main(String[] args) {
         int userChoice;
@@ -52,7 +52,7 @@ public class FinanceCorp_G4 {
     } // end of menu
     
     /* Asks the user for which type of investment and takes the respective attributes
-     * from them. It then creates the required object and add's it to the portfolio.
+     * from them. It then creates the required object and adds it to the portfolio.
      */
     
     public static void AddInvestmentToPortfolio() {
@@ -79,7 +79,7 @@ public class FinanceCorp_G4 {
             int dividendYield = Integer.parseInt(input.nextLine());
             System.out.println("Enter stock market capitalization: ");
             int marketCapatilization = Integer.parseInt(input.nextLine());
-            portfolio.add(new Stock_G4(customerName, customerID, symbol, name, quantity, purchasePrice, currentMarketValue, dividendYield, marketCapatilization));
+            portfolio.add(new Stock(customerName, customerID, symbol, name, quantity, purchasePrice, currentMarketValue, dividendYield, marketCapatilization));
         } else if ("Bond".equals(investmentType)) {
             System.out.println("Enter customer name: ");
             String customerName = input.nextLine();
@@ -99,7 +99,7 @@ public class FinanceCorp_G4 {
             int couponRate = Integer.parseInt(input.nextLine());
             System.out.println("Enter bond maturity date: ");
             String maturityDate = input.nextLine();
-            portfolio.add(new Bond_G4(customerName, customerID, symbol, name, quantity, purchasePrice, currentMarketValue, couponRate, maturityDate));
+            portfolio.add(new Bond(customerName, customerID, symbol, name, quantity, purchasePrice, currentMarketValue, couponRate, maturityDate));
         } else if ("Mutual Fund".equals(investmentType)) {
             System.out.println("Enter customer name: ");
             String customerName = input.nextLine();
@@ -119,17 +119,17 @@ public class FinanceCorp_G4 {
             int expenseRate = Integer.parseInt(input.nextLine());
             System.out.println("Enter mutual fund investment style: ");
             String investmentStyle = input.nextLine();
-            portfolio.add(new MutualFund_G4(customerName, customerID, symbol, name, quantity, purchasePrice, currentMarketValue, expenseRate, investmentStyle));
+            portfolio.add(new MutualFund(customerName, customerID, symbol, name, quantity, purchasePrice, currentMarketValue, expenseRate, investmentStyle));
         }
         
         System.out.println("\t \t \t =============== Portfolio ===============");
-        for (Investment_G4 i : portfolio) {
+        for (Investment i : portfolio) {
             System.out.println(i.toString());
         }
     }
     
-    /* Asks user to update which attribute of which propety and then displays
-     * the updates portfolio at the end
+    /* Asks user to update which attribute of which property and then displays
+     * the updated portfolio at the end
      */
     
     public static void UpdateInvestmentDetails() {
@@ -142,8 +142,8 @@ public class FinanceCorp_G4 {
         int choice = PropertyUpdate();
         
         if ("Stock".equals(investmentType)) {
-            for (Investment_G4 stock : portfolio) {
-                if (stock instanceof Stock_G4) {
+            for (Investment stock : portfolio) {
+                if (stock instanceof Stock) {
                     if (stock.getCustomerName().equals(cname)) {
                         switch (choice) {
                             case 1:
@@ -152,7 +152,7 @@ public class FinanceCorp_G4 {
                                 stock.setSymbol(symbol);
                                 break;
                             case 2:
-                                System.out.println("ENetr new stock name: ");
+                                System.out.println("Enter new stock name: ");
                                 String name = input.nextLine();
                                 stock.setName(name);
                                 break;
@@ -177,8 +177,8 @@ public class FinanceCorp_G4 {
                 } // end of if 1
             } // end of for
         } else if ("Bond".equals(investmentType)) {
-            for (Investment_G4 bond : portfolio) {
-                if (bond instanceof Bond_G4) {
+            for (Investment bond : portfolio) {
+                if (bond instanceof Bond) {
                     if (bond.getCustomerName().equals(cname)) {
                         switch (choice) {
                             case 1:
@@ -187,7 +187,7 @@ public class FinanceCorp_G4 {
                                 bond.setSymbol(symbol);
                                 break;
                             case 2:
-                                System.out.println("ENetr new stock name: ");
+                                System.out.println("Enter new stock name: ");
                                 String name = input.nextLine();
                                 bond.setName(name);
                                 break;
@@ -212,8 +212,8 @@ public class FinanceCorp_G4 {
                 } // end of if 1
             } // end of for
         } else if ("Mutual Fund".equals(investmentType)) {
-            for (Investment_G4 fund : portfolio) {
-                if (fund instanceof MutualFund_G4) {
+            for (Investment fund : portfolio) {
+                if (fund instanceof MutualFund) {
                     if (fund.getCustomerName().equals(cname)) {
                         switch (choice) {
                             case 1:
@@ -222,7 +222,7 @@ public class FinanceCorp_G4 {
                                 fund.setSymbol(symbol);
                                 break;
                             case 2:
-                                System.out.println("ENetr new stock name: ");
+                                System.out.println("Enter new stock name: ");
                                 String name = input.nextLine();
                                 fund.setName(name);
                                 break;
@@ -249,14 +249,14 @@ public class FinanceCorp_G4 {
         } // end of entire loop
         
         System.out.println("=============== Portfolio ===============");
-        for (Investment_G4 i : portfolio) {
+        for (Investment i : portfolio) {
             System.out.println(i.toString());
         }
     }
     
     /*
-    * takes the file address from the user and used scanner to read the file 
-    * and add the values to the portfolio while simeoultaneously creating the 
+    * takes the file address from the user and uses scanner to read the file 
+    * and add the values to the portfolio while simultaneously creating the 
     * required investment object.
     */
     
@@ -280,7 +280,7 @@ public class FinanceCorp_G4 {
                 int currentMarketValue = readFile.nextInt();
                 int dividendYield = readFile.nextInt();
                 int marketCapitalization = readFile.nextInt();
-                portfolio.add(new Stock_G4(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue, dividendYield, marketCapitalization));
+                portfolio.add(new Stock(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue, dividendYield, marketCapitalization));
             } // while end
         } else if ("Bond".equals(investment)) {
             while (readFile.hasNext()) {
@@ -293,7 +293,7 @@ public class FinanceCorp_G4 {
                 int currentMarketValue = readFile.nextInt();
                 int couponRate = readFile.nextInt();
                 String maturityDate = readFile.next();
-                portfolio.add(new Bond_G4(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue, couponRate, maturityDate));
+                portfolio.add(new Bond(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue, couponRate, maturityDate));
             } // while end
         } else if ("Mutual Fund".equals(investment)) {
             while (readFile.hasNext()) {
@@ -306,20 +306,20 @@ public class FinanceCorp_G4 {
                 int currentMarketValue = readFile.nextInt();
                 int expenseRate = readFile.nextInt();
                 String investmentStyle = readFile.next();
-                portfolio.add(new MutualFund_G4(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue, expenseRate, investmentStyle));
+                portfolio.add(new MutualFund(customerName, investmentType, symbol, name, quantity, purchasePrice, currentMarketValue, expenseRate, investmentStyle));
             } // while end
         }
         
         readFile.close();
         
         System.out.println("=============== Portfolio ===============");
-        for (Investment_G4 i : portfolio) {
+        for (Investment i : portfolio) {
             System.out.println(i.toString());
         }
     }
     
     /*
-    * This method, on taking the customers name from user input, searches for it
+    * This method, on taking the customer name from user input, searches for it
     * in the portfolio and then displays all of their investments.
     */
     
@@ -330,7 +330,7 @@ public class FinanceCorp_G4 {
         String customerName = input.nextLine();
         
         System.out.println("=============== All of " + customerName + "'s investments ===============");
-        for (Investment_G4 investment: portfolio) {
+        for (Investment investment: portfolio) {
             if (customerName.equals(investment.getCustomerName())) {
                 System.out.println(investment.toString());
             }
@@ -339,7 +339,7 @@ public class FinanceCorp_G4 {
     
     /*
     * The method calculates the sum of all the investments under a customers 
-    * name by checking first if they are added in the portfolio.
+    * name by checking first if they are added to the portfolio.
     */
     
     public static void CalculatePortfolioValue() {
@@ -349,7 +349,7 @@ public class FinanceCorp_G4 {
         
         double totalPortfolioValue = 0.0;
         
-        for (Investment_G4 investment: portfolio) {
+        for (Investment investment: portfolio) {
             if (customerName.equals(investment.getCustomerName())) {
                 totalPortfolioValue += investment.calculateTotalPortfolioValue();
             }
