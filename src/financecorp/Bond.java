@@ -1,10 +1,5 @@
 package financecorp_g4;
 
-/*
- * CSC301 Assignment 1
- * Done by: Zayna Wasma (1084503)
- */
-
 public class Bond_G4 extends Investment_G4 implements PortfolioValue_G4{
     private int couponRate;
     private String maturityDate;
