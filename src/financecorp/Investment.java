@@ -1,10 +1,5 @@
 package financecorp_g4;
 
-/*
- * CSC301 Assignment 1
- * Done by: Zayna Wasma (1084503)
- */
-
 public abstract class Investment_G4 implements PortfolioValue_G4{
     private String customerName;
     private String investmentType;
